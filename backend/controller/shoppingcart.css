@@ -1,0 +1,57 @@
+.main-div
+{
+    
+    background-color: olive
+}
+.row1
+{
+    max-width: 100%;
+}
+.left-menu
+{
+    height: 500px;
+    /* border: 1px solid black; */
+}
+.gender input
+{
+    margin-top: 15px;
+    
+}
+.gender label
+{
+    font-weight: bold;
+}
+.price
+{
+  margin-left: 100px;
+  width:150px;
+  height:30px;
+  border-radius: 10px;
+}
+.quantity-field
+{
+    width:150px;
+    margin-left:100px;
+}
+.quantity-field::placeholder
+{
+    font-weight: bold;
+
+}
+.col-md-4
+{
+    border: 2px solid black;
+    /* height:400px; */
+    
+}
+.images
+{
+    overflow:hidden;
+    height:300px;
+    width:320px;
+}
+.nike
+{
+    height:300px;
+    width:320px;   
+}

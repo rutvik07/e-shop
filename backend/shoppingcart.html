@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="shoppingcart.css"> -->
+    <link rel="stylesheet" href="/bootstrap-5.0.0-beta3-dist/css/bootstrap.min.css">
+    <script type="text/javascript" src="/bootstrap-5.0.0-beta3-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/bootstrap-5.0.0-beta3-dist/js/popper.min.js"></script>
+    <title>Shopping Cart</title>
+</head>
+    <style type="text/css">
+        .main-div
+{
+    
+    background-color: olive
+}
+.row1
+{
+    max-width: 100%;
+}
+.left-menu
+{
+    height: 500px;
+    /* border: 1px solid black; */
+}
+.gender input
+{
+    margin-top: 15px;
+    
+}
+.gender label
+{
+    font-weight: bold;
+}
+.price
+{
+  margin-left: 100px;
+  width:150px;
+  height:30px;
+  border-radius: 10px;
+}
+.quantity-field
+{
+    width:150px;
+    margin-left:100px;
+}
+.quantity-field::placeholder
+{
+    font-weight: bold;
+
+}
+.col-md-4
+{
+    border: 2px solid black;
+    /* height:400px; */
+    
+}
+.images
+{
+    overflow:hidden;
+    height:300px;
+    width:320px;
+}
+.nike
+{
+    height:300px;
+    width:320px;   
+}
+    </style>
+<body>
+    <div class="main-div">
+        <div class="row row1 pt-5">
+            <div class="col-md-3 left-menu">
+                <h1 class="text-center">Category</h1>
+                <form class="gender text-center pt-3">
+                    <input type="checkbox">
+                    <label>Men</label><br>
+                    <input type="checkbox">
+                    <label>Women</label><br>
+                    <input type="checkbox">
+                    <label>Kids</label><br>
+                </form>
+                <h1 class="text-center mt-4">Filter</h1>
+                    <select id="" class="price mt-4">
+                        <option value="">Price</option>
+                        <option value="">Rs 500-1000</option>
+                        <option value="">Rs 1000-2000</option>
+                        <option value="">Rs 2000-3000</option>
+                        <option value="">Rs 3000-5000</option>
+                        <option value="">Rs 5000-10000</option>
+                        <option value="">Rs 10000-15000</option>
+                    </select>
+                <h1 class="text-center mt-4">Quantity</h1>
+                <input class="quantity-field mt-3" type="text" placeholder="Add Quantity">
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="images">
+                        <img class="nike ps-4" src="/images/nike.jfif" alt="">
+                        </div>
+                        <div class="text-center">
+                        <h3>Nike Shoes</h3>
+                        <b>Price : Rs 1299</b>
+                        <p>All Sizes Available @Nike Store</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <img class="nike ps-4" src="/images/controller.jfif" alt="">
+                        <div class="text-center">
+                        <h3>Gaming Controller</h3>
+                        <b>Price : Rs 1799</b>
+                        <p>Gaming Joystick Compatible With All Devices</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <img class="nike ps-4" src="/images/superdry.jpg" alt="">
+                        <div class="text-center">
+                        <h3>Super Dry Hoodie</h3>
+                        <b>Price : Rs 5499</b>
+                        <p>Different Colors Available @Superdry</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img class="nike ps-4" src="/images/poco.jfif" alt="">
+                        <div class="text-center">
+                        <h3>POCO F1</h3>
+                        <b>Price : Rs 12499</b>
+                        <p>Different Colors Available @TOP-10 Mobiles</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <img class="nike ps-4" src="/images/earbuds.jfif" alt="">
+                        <div class="text-center">
+                        <h3>Air Pods Pro </h3>
+                        <b>Price : Rs 16499</b>
+                        <p>Different Colors Available @APPLE</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <img class="nike ps-4" src="/images/tv.jfif" alt="">
+                        <div class="text-center">
+                        <h3>Samsung Led</h3>
+                        <b>Price : Rs 12499</b>
+                        <p>Different TV's Available @Vijay Sales</p>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img class="nike ps-4" src="/images/dress1.webp" alt="">
+                            <div class="text-center">
+                            <h3>Forever 21</h3>
+                            <b>Price : Rs 1499</b>
+                            <p>Different Colors Available @Forever 21</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <img class="nike ps-4" src="/images/dress2.png" alt="">
+                            <div class="text-center">
+                            <h3>ZARA </h3>
+                            <b>Price : Rs 1499</b>
+                            <p>Different Colors Available @ZARA</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <img class="nike ps-4" src="/images/kids.jfif" alt="">
+                            <div class="text-center">
+                            <h3>FASHION FEVER</h3>
+                            <b>Price : Rs 12499</b>
+                            <p>Different Colors Available @FASHION FEVER</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

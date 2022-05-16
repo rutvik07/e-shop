@@ -1,0 +1,42 @@
+
+<!-- saved from url=(0040)https://phlox.pro/subs/chat-storage.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <script>
+          function getBeaconData() {
+            return Object.keys(localStorage).filter(i => i.indexOf('hs-beacon') !== -1).map( key => ({
+              key: key,
+              value: localStorage.getItem(key),
+            }));
+          }
+
+          var domains = [
+            "https://www.phlox.pro",
+            "https://phlox.pro",
+            "http://www.phlox.pro",
+            "http://phlox.pro",
+            "https://demo.phlox.pro",
+            "http://demo.phlox.pro",
+          ];
+          
+          window.addEventListener("message", messageHandler, false);
+          function messageHandler(event) {
+            if (!domains.includes(event.origin))
+              return;
+            
+            var action = event.data.action;
+            var key = event.data.key;
+            var value = event.data.value;
+        
+            if (action == 'save'){
+              window.localStorage.setItem(key, value);
+            } else if (action == 'get') {   
+              event.source.postMessage({
+                chatStorage: getBeaconData()
+              }, '*');
+            }
+          }
+        </script>
+    
+</body></html>

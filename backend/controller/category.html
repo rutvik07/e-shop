@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category</title>
+</head>
+<body>
+    <label>NAME :</label>
+    <input type="text" placeholder="Enter Name" id="name" > <br>
+    <label>ALIAS :</label>
+    <input type="text" placeholder="Enter Alias" id="as" > <br>
+    <button onclick="fun1();">Submit</button>
+
+    <script type="text/javascript">
+        var fun1 = ()=>{
+            var name = document.getElementById('name').value;
+            var as = document.getElementById('as').value;
+
+            console.log(name,as);
+            var request = new XMLHttpRequest();
+
+                request.open("POST","http://localhost:9000/category/server-add-category")
+
+                request.setRequestHeader("Content-type", "application/json");
+
+                request.onreadystatechange = function() {
+                    if(this.readyState === 4 && this.status === 200)
+                    {
+                        document.getElementById("result").innerHTML = this.responseText;
+                        
+                        var ajaxResponse = (JSON.parse(JSON.stringify(this.responseText)));
+                        console.log(ajaxResponse.data);
+                        for(var i = 0; i < ajaxResponse.data.length; i++)
+                        {
+                            document.getElementById("result").innerHTML += ajaxResponse.data[i].name +"<br>";    
+                        }
+                    }
+                   
+                };
+
+                request.send(JSON.stringify({name:name,as:as}));
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style type="text/css">
+        .main-div
+        {
+            display: flex;
+        }
+        .div-1
+        {
+            width: 30%;
+            height: 500px;
+            background-color:rgb(20, 141, 141);
+            box-sizing: border-box;
+            padding-top:30px;
+        }
+        .div-2
+        {
+            width: 70%;
+            height: 500px;
+            background-color:aqua;
+            box-sizing: border-box;
+            padding-top:30px;
+            
+            
+        }
+        #category
+        {
+            width: 100px;
+            height: 30px;
+            margin-left: 120px;
+            display:block;
+        }
+        /* input[type='checkbox']
+        {
+            display:block;
+            margin-top: 10px;
+        } */
+        button
+        {
+            background-color:olive;
+            border: 5px solid black;
+
+        }
+        .pro-main-div
+        {
+            border: 2px solid black;
+            margin: 10px;
+            display:inline-block;
+        }
+        .cart-img
+        {
+            height:100px;
+            width:100%;
+        }
+    </style>
+</head>
+   
+<body onload="addCategory();">
+    <div class="main-div">
+        <div class="div-1">
+            <div id="category">
+                
+            </div>
+            
+        </div>
+        <!-- <button onclick="showProduct();">Show Products</button>  -->
+        <div class="div-2">
+            <div id="all-products">
+    
+            </div>
+            <div id="data-div">
+                
+            </div>
+        </div>
+    </div>   
+    
+
+    
+
+
+    <script type="text/javascript">
+    var request = new XMLHttpRequest();
+        
+        request.open("GET","http://localhost:9000/product/product-list")
+
+        request.setRequestHeader("Content-type", "application/json");
+
+    request.onreadystatechange = function()
+    
+     {
+
+    if(this.readyState === 4 && this.status === 200)
+    {
+        var proData = JSON.parse(this.responseText);
+       
+        for(var i = 0; i < proData.data.length; i++)
+        {
+            document.querySelector('#all-products').innerHTML += `
+            <div class="pro-main-div">
+            <img class="cart-img" src = "/images/${proData.data[i].file}">
+            <div>Name : ${proData.data[i].name}<div>
+            <div>Description :${proData.data[i].description}<div>
+            <div>Category :${proData.data[i].category.name}<div>
+            <div>Price :${proData.data[i].price}<div>
+            <div>Quantity :${proData.data[i].quantity}<div>
+             <div>                   
+            `;
+
+            // console.log(proData.data[i].category);
+        }
+
+        
+        // document.getElementById("data-div").innerHTML = request.responseText;
+    }
+};
+
+request.send();
+
+
+
+      
+        var addCategory = ()=>{
+
+            var request = new XMLHttpRequest();
+
+            request.open("GET","http://localhost:9000/category/server-get-category")
+
+            request.setRequestHeader("Content-type", "application/json");
+
+            request.onreadystatechange = function() {
+                if(this.readyState === 4 && this.status === 200)
+                {
+                    var categoriesData = JSON.parse(this.responseText);
+                    console.log(categoriesData.data);
+                    var categoryOptionsHtml = '';
+                    for(let i = 0; i < categoriesData.data.length; i++) {
+                        categoryOptionsHtml +=  `<div> <input onclick="filterData(this);" type="checkbox" class="inp-checkbox" value="${categoriesData.data[i]._id}"> ${categoriesData.data[i].name}</input> <div>`
+                    }
+                    document.getElementById("category").innerHTML = categoryOptionsHtml
+                    console.log(categoryOptionsHtml, 'categoryOptionsHtml')
+                    // document.getElementById("result").innerHTML = this.responseText;
+                }
+            };
+
+            request.send();
+
+        }
+
+        
+
+        
+        
+        
+        
+        var filterData = (a)=>
+        {
+            document.querySelector('#all-products').innerHTML = "";
+                var request = new XMLHttpRequest();
+        
+                    request.open("POST","http://localhost:9000/product/show-product")
+        
+                    request.setRequestHeader("Content-type", "application/json");
+
+                request.onreadystatechange = function()
+
+                 {
+
+                if(this.readyState === 4 && this.status === 200)
+                {
+                    var proData = JSON.parse(this.responseText);
+                   
+                    for(var i = 0; i < proData.data.length; i++)
+                    {
+                        document.querySelector('#data-div').innerHTML += `
+                        <div class="pro-main-div">
+                        <img class="cart-img" src = "/images/${proData.data[i].file}">
+                        <div>Name : ${proData.data[i].name}<div>
+                        <div>Description :${proData.data[i].description}<div>
+                        <div>Category :${proData.data[i].category.name}<div>
+                        <div>Price :${proData.data[i].price}<div>
+                        <div>Quantity :${proData.data[i].quantity}<div>
+                         <div>                   
+                        `;
+
+                        console.log(proData.data[i].category);
+                    }
+
+                    
+                    // document.getElementById("data-div").innerHTML = request.responseText;
+                }
+            };
+
+            request.send(JSON.stringify({category:a.value}));
+            }
+            
+    </script>
+</body>
+</html>
